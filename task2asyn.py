@@ -4,20 +4,20 @@ import aiohttp
 import json
 async def download_file(index: int):
     url = f"https://xkcd.com/{index}/info.0.json"
-    print(f"Begin downloading {url}")
+#     print(f"Begin downloading {url}")
     async with aiohttp.ClientSession() as session:
         async with session.get(url) as response:
             content = await response.read()
-            print(f"Finished downloading {url}")
+#             print(f"Finished downloading {url}")
             return content
 
 
 async def write_to_file(content: bytes):
     filename = "data.json"
     with open(filename, "ab") as file:
-        print("Begin writing")
+#         print("Begin writing")
         file.write(content)
-        print("Finished writing")
+#         print("Finished writing")
 
 
 async def combining(index: int):
@@ -34,9 +34,9 @@ async def main():
 
 s = time.time()
 asyncio.run(main())
-elapsed = time.time() - s
+time_taken = time.time() - s
 # with open("data.json",'r') as file:
 #     print(file)
-print(f"Execution time: {elapsed:0.2f} seconds.")
+print(f"Execution time: {time_taken:0.2f} seconds.")
 
 
